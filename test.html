@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Test</title>
+</head>
+<body>
+    <h1>API Test</h1>
+    <button onclick="testGET()">Test GET</button>
+    <button onclick="testPOST()">Test POST</button>
+    <div id="result"></div>
+
+    <script>
+        const API_BASE = (location.protocol === 'file:')
+            ? 'http://localhost:3000'
+            : '';
+        
+        console.log('Protocol:', location.protocol);
+        console.log('API_BASE:', API_BASE);
+        
+        async function testGET() {
+            try {
+                console.log('Testing GET /api/blogs');
+                const response = await fetch(API_BASE + '/api/blogs');
+                const data = await response.json();
+                console.log('GET response:', response.status, data);
+                document.getElementById('result').innerHTML = 'GET Success: ' + response.status + ' - ' + data.length + ' blogs';
+            } catch (error) {
+                console.error('GET Error:', error);
+                document.getElementById('result').innerHTML = 'GET Error: ' + error.message;
+            }
+        }
+        
+        async function testPOST() {
+            try {
+                console.log('Testing POST /api/blogs');
+                const formData = new FormData();
+                formData.append('title', 'Test Blog ' + Date.now());
+                formData.append('content', 'Test Content');
+                
+                const postResponse = await fetch(API_BASE + '/api/blogs?adminSecret=arnob321', {
+                    method: 'POST',
+                    headers: {
+                        'x-admin-secret': 'arnob321'
+                    },
+                    body: formData
+                });
+                
+                console.log('POST response:', postResponse.status);
+                if (postResponse.ok) {
+                    const postData = await postResponse.json();
+                    console.log('POST data:', postData);
+                    document.getElementById('result').innerHTML += '<br>POST Success: ' + postResponse.status;
+                } else {
+                    const errorText = await postResponse.text();
+                    console.log('POST error:', errorText);
+                    document.getElementById('result').innerHTML += '<br>POST Error: ' + postResponse.status + ' - ' + errorText;
+                }
+                
+            } catch (error) {
+                console.error('POST Error:', error);
+                document.getElementById('result').innerHTML += '<br>POST Error: ' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>

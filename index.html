@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arnab Samadder - Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+     <!--front photo-->
+    <img src="assets/profile-photo2.png" alt="Arnab Samadder" 
+    class="big-photo">
+    <img src="assets/profile-photo.png" alt="Arnab Samadder" 
+    class="big-photo2">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/70">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center justify-center space-x-8">
+                <a href="#home" class="nav-link active" data-section="home">Home</a>
+                <a href="#about" class="nav-link" data-section="about">About</a>
+                <a href="#blogs" class="nav-link" data-section="blogs">Blogs</a>
+                <a href="#services" class="nav-link" data-section="services">Services</a>
+                <a href="#recent-works" class="nav-link" data-section="recent-works">Recent Works</a>
+                <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+                <a href="#research" class="nav-link" data-section="research">Research</a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section with Video Background -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        
+        <div class="flex items-center space-x-3">
+            <button id="admin-login-btn" class="cta-button secondary">Admin Login</button>
+            <button id="admin-logout-btn" class="cta-button secondary" style="display:none;">Logout</button>
+        </div>    
+        
+        
+        <!-- Video Background -->
+        <div class="video-container">
+            <video autoplay muted loop playsinline class="video-background" id="background-video">
+                <source src="assets/background.mov" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+
+       
+
+        <div class="relative z-10 text-center max-w-5xl mx-auto px-6 gap-14">
+            
+            
+            <!-- Main Title -->
+            <h1 class="text-5xl md:text-7xl font-black mb-12 bg-gradient-to-r from-blue-400 via-purple-500 bg-clip-text text-transparent animate-title">
+                Welcome to 
+            </h1>
+            <h1 class="txt2 text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-title">
+                Arnab's Space
+            </h1>
+            <!-- Subtitle -->
+            <p class="text-xl md:text-2xl text-gray-300 mb-12 animate-fade-in-up">
+                Dynamic Youth Leader • Creative Strategist • Emerging Researcher
+            </p>
+
+            <!-- Action Buttons -->
+            
+
+            <!-- Organization Logos -->
+            <div class="logos-container">
+                <div class="logos-scroll">
+                    <!-- First set of logos -->
+                    <div class="logo-glow">
+                        <img src="assets/ias.png" alt="IAS" class="logo-img zoomed_logo" />
+                    </div>
+                    <div class="logo-glow">
+                        <img src="assets/youthxlogo.webp" alt="YouthX" class="logo-img zoomed_logo" />
+                    </div>
+                    <div class="logo-glow">
+                        <img src="assets/hult.png" alt="Hult" class="logo-img" />
+                    </div>
+                    <div class="logo-glow">
+                        <img src="assets/exellence.png" alt="Excellence" class="logo-img" />
+                    </div>
+                    <div class="logo-glow">
+                        <img src="assets/mtr.png" alt="MTR" class="logo-img zoomed_logo" />
+                    </div>
+                    <div class="logo-glow">
+                        <img src="assets/opt.png" alt="OPT" class="logo-img" />
+                    </div>
+                    <div class="logo-glow">
+                        <img src="assets/pstu.png" alt="PSTU" class="logo-img" />
+                    </div>
+                    <div class="logo-glow">
+                        <img src="assets/wff.png" alt="wff" class="logo-img zoomed_logo" />
+                    </div>
+                    
+                    <!-- Duplicate set for seamless looping -->
+                    <div class="logo-glow">
+                        <img src="assets/ias.png" alt="IAS" class="logo-img zoomed_logo" />
+                    </div>
+                    <div class="logo-glow">
+                        <img src="assets/youthxlogo.webp" alt="YouthX" class="logo-img zoomed_logo" />
+                    </div>
+                    <div class="logo-glow">
+                        <img src="assets/hult.png" alt="Hult" class="logo-img" />
+                    </div>
+                    <div class="logo-glow">
+                        <img src="assets/exellence.png" alt="Excellence" class="logo-img" />
+                    </div>
+                    <div class="logo-glow">
+                        <img src="assets/mtr.png" alt="MTR" class="logo-img zoomed_logo" />
+                    </div>
+                    <div class="logo-glow">
+                        <img src="assets/opt.png" alt="OPT" class="logo-img" />
+                    </div>
+                    <div class="logo-glow">
+                        <img src="assets/pstu.png" alt="PSTU" class="logo-img" />
+                    </div>
+                    <div class="logo-glow">
+                        <img src="assets/wff.png" alt="wff" class="logo-img zoomed_logo" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div class="scroll-indicator"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-dark-section">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="section-title">Welcome Again</h2>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
+                <div class="space-y-6">
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        Here you can find detailed information about ARNAB. From his academic background to his desired career you can go through all information on this section.
+                    </p>
+                    
+                    <div class="flex space-x-4 mb-8">
+                        <button class="tab-button active" data-tab="organizations">Organizations</button>
+                        <button class="tab-button" data-tab="education">Education</button>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <img class="about-photo-fade" src="assets/aboutphoto.png" alt="Arnab Samadder">
+                </div>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="tab-content active" id="organizations-tab">
+                <div class="grid  gap-8 horizontal-scroll">
+                    <div class="organization-card">
+                        <div class="h-16 w-16 bg-gradient-to-r  rounded-lg flex items-center justify-center text-white font-bold mb-4"><img src="assets/pstu.png"></div>
+                        <h3 class="text-xl font-bold text-white mb-2">IAAS PSTU</h3>
+                        <div class="space-y-1 text-gray-400">
+                            <p><strong>Local Network Manager</strong></p>
+                            <p>ExPro Administration Officer</p>
+                            <p>General Member</p>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-4">It's the <strong>prior organization</strong> that I have joined at my very beginning of my university life.</p>
+                    </div>
+
+                    <div class="organization-card">
+                        <div class="h-16 w-16 bg-gradient-to-r  rounded-lg flex items-center justify-center text-white font-bold mb-4"><img src="assets/hult.png"></div>
+                        <h3 class="text-xl font-bold text-white mb-2">Hult Prize</h3>
+                        <div class="space-y-1 text-gray-400">
+                            <p><strong>Deputy Director</strong></p>
+                            <p><strong>Head of IT</strong></p>
+                            <p>Executive</p>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-4">It's the organization from where I learned all the <strong>organizational behavior</strong>.</p>
+                    </div>
+
+                    <div class="organization-card">
+                        <div class="h-16 w-16 bg-gradient-to-r  rounded-lg flex items-center justify-center text-white font-bold mb-4"><img src="assets/ias.png"></div>
+                        <h3 class="text-xl font-bold text-white mb-2">IAAS Bangladesh</h3>
+                        <div class="space-y-1 text-gray-400">
+                            <p><strong>National Operational Officer</strong></p>
+                            <p><strong>Video Editor</strong></p>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-4">I have joined IAAS Bangladesh to apply my <strong>previously earned experiences</strong>.</p>
+                    </div>
+                    <div class="organization-card">
+                        <div class="h-16 w-16 bg-gradient-to-r  rounded-lg flex items-center justify-center text-white font-bold mb-4"><img src="assets/hult.png"></div>
+                        <h3 class="text-xl font-bold text-white mb-2">Hult Prize</h3>
+                        <div class="space-y-1 text-gray-400">
+                            <p><strong>Deputy Director</strong></p>
+                            <p><strong>Head of IT</strong></p>
+                            <p>Executive</p>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-4">It's the organization from where I learned all the <strong>organizational behavior</strong>.</p>
+                    </div>
+                    <div class="organization-card">
+                        <div class="h-16 w-16 bg-gradient-to-r  rounded-lg flex items-center justify-center text-white font-bold mb-4"><img src="assets/hult.png"></div>
+                        <h3 class="text-xl font-bold text-white mb-2">Hult Prize</h3>
+                        <div class="space-y-1 text-gray-400">
+                            <p><strong>Deputy Director</strong></p>
+                            <p><strong>Head of IT</strong></p>
+                            <p>Executive</p>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-4">It's the organization from where I learned all the <strong>organizational behavior</strong>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="education-tab">
+                <div class="space-y-8">
+                    <div class="education-item">
+                        <h3 class="text-xl font-bold text-white">Patuakhali Science and Technology University</h3>
+                        <p class="text-purple-400">B.Sc. in Agriculture</p>
+                    </div>
+                    <div class="education-item">
+                        <h3 class="text-xl font-bold text-white">St. Joseph Higher Secondary School</h3>
+                        <p class="text-purple-400">HSC</p>
+                    </div>
+                    <div class="education-item">
+                        <h3 class="text-xl font-bold text-white">Pirojpur Govt High School</h3>
+                        <p class="text-purple-400">SSC-JSC-PSC</p>
+                    </div>
+                    <div class="education-item">
+                        <h3 class="text-xl font-bold text-white">Morshed Srimty Sishu Niketon</h3>
+                        <p class="text-purple-400">Kinder Garden</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Text -->
+            <div class="mt-16 max-w-4xl mx-auto">
+                <p class="text-lg text-gray-300 leading-relaxed">
+                    Arnab Samadder is a dynamic youth leader, creative strategist, and emerging researcher whose work spans innovation, empowerment, and cultural branding. As the founder of OPT. National, Bangladesh's first email newsletter agency for global opportunities, Arnab connects thousands of young minds with life-changing prospects. He's also the co-founder of MEETRO, a bold initiative that reimagines Bangladeshi heritage through modern merchandising and storytelling.
+                </p>
+                <br>
+                <p class="text-lg text-gray-300 leading-relaxed">
+                    On campus, Arnab leads The Brainiacs, a renowned team made by him along with his friends. Together, they've won multiple competitions, including the prestigious Textile Olympiad 2.0, showcasing their strategic brilliance and creative execution.
+                </p>
+                <br>
+                <p class="text-lg text-gray-300 leading-relaxed">
+                    Arnab's research portfolio includes Pustikhamari, a vertical farming project in coastal Bangladesh funded by GAIN, and two other initiatives on vermicompost treatment and humic acid production from lignite coal, backed by RIC. His long-term goal is to pursue research as a career, driving sustainable innovation in agriculture.
+                </p>
+                <br>
+                <p class="text-lg text-gray-300 leading-relaxed">
+                    With roles in IAAS Bangladesh, World Food Forum, YouthX, and more, Arnab blends leadership with hands-on creativity—excelling in video editing, motion graphics, SEO, and outreach strategy. He's driven by a mission to empower youth, celebrate heritage, and build a future where ideas thrive and impact multiplies.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-dark-section-alt">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="section-title">Services</h2>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <label for="services-graphics" class="service-tag">Graphics Design</label>
+                <label for="services-video" class="service-tag">Video Editing</label>
+                <label for="services-photography" class="service-tag">Photography</label>
+                <label for="services-research" class="service-tag">Research Paper</label>
+            </div>
+
+            <input type="radio" name="services" id="services-graphics" class="services-toggle" checked />
+            <input type="radio" name="services" id="services-video" class="services-toggle" />
+            <input type="radio" name="services" id="services-photography" class="services-toggle" />
+            <input type="radio" name="services" id="services-research" class="services-toggle" />
+
+            <div class="services-panels">
+                <div class="services-panel graphics grid">
+                    <div class="service-card">
+                        <div class="service-image-grid">
+                            <div class="service-image-placeholder bg-gradient-to-br from-blue-500 to-purple-600 "><img src="assets/11.jpg" class="sphoto"></div>
+                            <div class="service-image-placeholder bg-gradient-to-br from-green-500 to-blue-500"><img src="assets/12.jpg" class="sphoto"></div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Social Media Posts Designs</h3>
+                        <p class="text-gray-400 mb-3">Ready posts for <strong>social media</strong></p>
+                        <a class="blog-btn" target="_blank" rel="noopener" href="https://example.com/graphics/social">Sample</a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-image-grid">
+                            <div class="service-image-placeholder bg-gradient-to-br from-pink-500 to-red-600"><img src="assets/21.jpg" class="sphoto"></div>
+                            <div class="service-image-placeholder bg-gradient-to-br from-yellow-500 to-pink-500"><img src="assets/22.jpg" class="sphoto2"></div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Brand Identity Kits</h3>
+                        <p class="text-gray-400 mb-3"><strong>Logos</strong>, palettes, typography</p>
+                        <a class="blog-btn" target="_blank" rel="noopener" href="https://example.com/graphics/brand">Sample</a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-image-grid">
+                            <div class="service-image-placeholder bg-gradient-to-br "><img src="assets/31.jpg" class="sphoto31"></div>
+                            <div class="service-image-placeholder bg-gradient-to-br "><img src="assets/32.jpg" class="sphoto31"></div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Event Collateral</h3>
+                        <p class="text-gray-400 mb-3"><strong>Banners</strong>, flyers, <strong>posters</strong></p>
+                        <a class="blog-btn" target="_blank" rel="noopener" href="https://example.com/graphics/event">Sample</a>
+                    </div>
+                </div>
+
+                <div class="services-panel video grid">
+                    <div class="service-card">
+                        <div class="service-image-grid">
+                            <div class="video-image-placeholder relative" style="padding-bottom: 56.25%; overflow: hidden;">
+                                <iframe width="340" height="190" src="https://www.youtube.com/embed/q0aFOxT6TNw?si=Z-SUl0qv8Gjy7WO5&amp;start=12" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                            
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Social Shorts Editing</h3>
+                        <p class="text-gray-400 mb-3"><strong>Reels</strong>, YT Shorts, <strong>TikTok</strong></p>
+                        <a class="blog-btn" target="_blank" rel="noopener" href="https://example.com/video/shorts">Sample</a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-image-grid">
+                            <div class="video-image-placeholder relative" style="padding-bottom: 56.25%; overflow: hidden;">
+                                <iframe width="340" height="190" src="https://www.youtube.com/embed/q0aFOxT6TNw?si=Z-SUl0qv8Gjy7WO5&amp;start=12" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                            
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Long-form Editing</h3>
+                        <p class="text-gray-400 mb-3"><strong>Documentary</strong>, vlogs, <strong>tutorials</strong></p>
+                        <a class="blog-btn" target="_blank" rel="noopener" href="https://example.com/video/longform">Sample</a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-image-grid">
+                            <div class="video-image-placeholder relative" style="padding-bottom: 56.25%; overflow: hidden;">
+                                <iframe width="340" height="190" src="https://www.youtube.com/embed/q0aFOxT6TNw?si=Z-SUl0qv8Gjy7WO5&amp;start=12" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                            
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Motion Graphics</h3>
+                        <p class="text-gray-400 mb-3"><strong>Animated</strong> intros/outros</p>
+                        <a class="blog-btn" target="_blank" rel="noopener" href="https://example.com/video/mograph">Sample</a>
+                    </div>
+                </div>
+
+                <div class="services-panel photography grid">
+                    <div class="service-card">
+                        <div class="service-image-grid">
+                            <div class="service-image-placeholder bg-gradient-to-br from-amber-500 to-orange-600"></div>
+                            <div class="service-image-placeholder bg-gradient-to-br from-yellow-500 to-amber-500"></div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Event Photography</h3>
+                        <p class="text-gray-400 mb-3"><strong>Coverage</strong> with editing</p>
+                        <a class="blog-btn" target="_blank" rel="noopener" href="https://example.com/photo/event">Sample</a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-image-grid">
+                            <div class="service-image-placeholder bg-gradient-to-br from-fuchsia-500 to-purple-600"></div>
+                            <div class="service-image-placeholder bg-gradient-to-br from-pink-500 to-fuchsia-500"></div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Product Shoots</h3>
+                        <p class="text-gray-400 mb-3"><strong>Catalog</strong>, e-commerce</p>
+                        <a class="blog-btn" target="_blank" rel="noopener" href="https://example.com/photo/product">Sample</a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-image-grid">
+                            <div class="service-image-placeholder bg-gradient-to-br from-red-500 to-rose-600"></div>
+                            <div class="service-image-placeholder bg-gradient-to-br from-orange-500 to-red-500"></div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Portrait Sessions</h3>
+                        <p class="text-gray-400 mb-3"><strong>Personal</strong>, professional</p>
+                        <a class="blog-btn" target="_blank" rel="noopener" href="https://example.com/photo/portrait">Sample</a>
+                    </div>
+                </div>
+
+                <div class="services-panel research grid">
+                    <div class="service-card">
+                        <div class="service-image-grid">
+                            
+                            <div class="video-image-placeholder bg-gradient-to-br from-indigo-500 to-violet-600"><img src="assets/r1.jpg" class="video-image-placeholder"></div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Paper Writing</h3>
+                        <p class="text-gray-400 mb-3"><strong>Language</strong>, structure, <strong>citations</strong></p>
+                        <a class="blog-btn" target="_blank" rel="noopener" href="https://example.com/research/editing">Sample</a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-image-grid">
+                            
+                            <div class="video-image-placeholder bg-gradient-to-br from-indigo-500 to-violet-600"><img src="assets/r2.jpg" class="video-image-placeholder"></div>
+                            
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Figure Drawing</h3>
+                        <p class="text-gray-400 mb-3"><strong>Charts</strong> and figures</p>
+                        <a class="blog-btn" target="_blank" rel="noopener" href="https://example.com/research/dataviz">Sample</a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-image-grid">
+                            <div class="video-image-placeholder bg-gradient-to-br from-indigo-500 to-violet-600"><img src="assets/r3.png" class="video-image-placeholder"></div>
+                            
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Scientific Poster Making</h3>
+                        <p class="text-gray-400 mb-3"><strong>Conference-ready</strong> posters</p>
+                        <a class="blog-btn" target="_blank" rel="noopener" href="https://example.com/research/poster">Sample</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Works Section -->
+    <section id="recent-works" class="py-20 bg-dark-section page-bg recent-works-bg">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="section-title">Recent Works</h2>
+            <div id="recent-works-admin-controls" class="flex justify-end mb-6" style="display:none;">
+                <button id="add-recent-work-btn" class="cta-button primary">Add Recent Work</button>
+            </div>
+            <div id="recent-works-grid" class="grid lg:grid-cols-3 gap-8"></div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-dark-section page-bg projects-bg">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="section-title">Projects</h2>
+            <div id="projects-admin-controls" class="flex justify-end mb-6" style="display:none;">
+                <button id="add-project-btn" class="cta-button primary">Add Project</button>
+            </div>
+            <div id="projects-grid" class="grid lg:grid-cols-2 gap-12"></div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research" class="py-20 bg-dark-section-alt page-bg research-bg">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="section-title">Research</h2>
+            
+            <div class="flex justify-between items-center mb-6">
+                <div class="flex justify-center space-x-4">
+                    <button class="research-tag" data-research-filter="ongoing">On Going</button>
+                    <button class="research-tag" data-research-filter="published">Published</button>
+                    <button class="research-tag" data-research-filter="proposal">Proposals</button>
+                </div>
+                <div id="research-admin-controls" style="display:none;">
+                    <button id="add-research-btn" class="cta-button primary">Add Research</button>
+                </div>
+            </div>
+
+            <div id="research-grid" class="grid md:grid-cols-3 gap-8"></div>
+        </div>
+    </section>
+
+    <!-- Blogs Section -->
+    <section id="blogs" class="py-20 bg-dark-section page-bg blogs-bg">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="section-title">Blogs</h2>
+            <div id="blogs-admin-controls" class="flex justify-end mb-6" style="display:none;">
+                <button id="add-blog-btn" class="cta-button primary">Add Blog</button>
+            </div>
+            
+            <div id="blogs-grid" class="grid lg:grid-cols-3 gap-8"></div>
+
+            <!-- Blog Slider Dots -->
+            
+        </div>
+    </section>
+
+    <!-- People's Talk Section -->
+    <section id="testimonials" class="py-20 bg-dark-section-alt">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="section-title">Peoples Talk</h2>
+            <div id="testimonials-admin-controls" class="flex justify-end mb-6" style="display:none;">
+                <button id="add-testimonial-btn" class="cta-button primary">Add Testimonial</button>
+            </div>
+            
+            <div class="testimonials-container overflow-hidden">
+                <div id="testimonials-scroll" class="testimonials-scroll flex gap-8">
+                    <!-- Testimonials will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact_img py-20 bg-dark-section">
+        <div class=" max-w-6xl mx-auto px-6 ">
+            
+            <h2 class="contact-title title mb-8"><span class="title-text">Let's Get Connected</span></h2>
+            
+            <div class="flex justify-center space-x-6 mb-12">
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/arnab.samadder.2024" target="_blank" class="social-icon">
+                    <div class="bg-gradient-to-br from-blue-500 to-purple-600 w-12 h-12 rounded-full flex items-center justify-center">
+                        <i class="fab fa-facebook-f text-white text-lg"></i>
+                    </div>
+                </a>
+                
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/art_stary_arnab?igsh=MWJraGNsY243cndndA==" target="_blank" class="social-icon">
+                    <div class="bg-gradient-to-br from-pink-500 to-red-500 w-12 h-12 rounded-full flex items-center justify-center">
+                        <i class="fab fa-instagram text-white text-lg"></i>
+                    </div>
+                </a>
+                
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/arnab-samadder-babla/" target="_blank" class="social-icon">
+                    <div class="bg-gradient-to-br from-blue-400 to-cyan-500 w-12 h-12 rounded-full flex items-center justify-center">
+                        <i class="fab fa-linkedin-in text-white text-lg"></i>
+                    </div>
+                </a>
+
+                <!-- WhatsApp -->
+                <a href="https://wa.me/yourphonenumber" target="_blank" class="social-icon">
+                    <div class="bg-gradient-to-br from-green-500 to-blue-500 w-12 h-12 rounded-full flex items-center justify-center">
+                        <i class="fab fa-whatsapp text-white text-lg"></i>
+                    </div>
+                </a>
+                <!-- Gmail -->
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=arnab.prof.work@gmail.com&su=Contact%20from%20Website&body=Hello%20Arnab," target="_blank" class="social-icon">
+                    <div class="bg-gradient-to-br from-red-500 to-yellow-500 w-12 h-12 rounded-full flex items-center justify-center">
+                        <i class="fab fa-google text-white text-lg"></i>
+                    </div>
+                </a>
+            </div>
+
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <a href="cv/cv.pdf" download class="cta-button primary">Download CV</a>
+                <a href="mailto:arnab.prof.work@gmail.com" class="cta-button secondary">Book a Meeting</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Login Modal -->
+    <div id="admin-modal" class="modal-backdrop" style="display:none;">
+        <div class="modal">
+            <h3 class="modal-title">Admin Login</h3>
+            <p class="modal-subtitle">Enter password to manage content</p>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <input id="admin-password" type="password" class="input" placeholder="Admin Password" />
+                <label style="display:flex; align-items:center; gap:6px; font-size: 0.9rem; color:#d1d5db;">
+                    <input id="admin-show-password" type="checkbox" /> Show
+                </label>
+            </div>
+            <div class="modal-actions">
+                <button id="admin-cancel" class="cta-button secondary" type="button">Cancel</button>
+                <button id="admin-submit" class="cta-button primary" type="button">Login</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog Create/Edit Modal -->
+    <div id="blog-modal" class="modal-backdrop" style="display:none;">
+        <div class="modal">
+            <h3 id="blog-modal-title" class="modal-title">Add Blog</h3>
+            <div class="space-y-3">
+                <label class="label">Cover Image</label>
+                <input id="blog-cover" type="file" accept="image/*" class="file-input" />
+                <label class="label">Title</label>
+                <input id="blog-title-input" type="text" class="input" placeholder="Blog title" />
+                <label class="label">Content</label>
+                <div style="display:flex; gap:8px; align-items:center; margin-bottom:4px; flex-wrap:wrap;">
+                    <button id="blog-insert-image" class="cta-button secondary" type="button">Insert Image</button>
+                    <button id="blog-bold-text" class="cta-button secondary" type="button">Bold Text</button>
+                    <span class="label" style="opacity:0.8;">Upload images or format text</span>
+                </div>
+                <textarea id="blog-content-input" class="textarea" placeholder="Write your blog..." rows="8"></textarea>
+            </div>
+            <div class="modal-actions">
+                <button id="blog-cancel" class="cta-button secondary" type="button">Cancel</button>
+                <button id="blog-save" class="cta-button primary" type="button">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog View Modal -->
+    <div id="blog-view-modal" class="modal-backdrop" style="display:none;">
+        <div class="modal">
+            <div id="blog-view-cover" class="w-full h-38 rounded-lg mb-4 bg-gray-900"></div>
+            <h3 id="blog-view-title" class="modal-title"></h3>
+            <div id="blog-view-content" class="modal-content"></div>
+            <div class="modal-actions">
+                <button id="blog-view-close" class="cta-button secondary" type="button">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Create/Edit Modal -->
+    <div id="project-modal" class="modal-backdrop" style="display:none;">
+        <div class="modal">
+            <h3 id="project-modal-title" class="modal-title">Add Project</h3>
+            <div class="space-y-3">
+                <label class="label">Cover Image</label>
+                <input id="project-cover" type="file" accept="image/*" class="file-input" />
+                <label class="label">Title</label>
+                <input id="project-title-input" type="text" class="input" placeholder="Project title" />
+                <label class="label">Description</label>
+                <div style="display:flex; gap:8px; align-items:center; margin-bottom:4px; flex-wrap:wrap;">
+                    <button id="project-insert-image" class="cta-button secondary" type="button">Insert Image</button>
+                    <button id="project-bold-text" class="cta-button secondary" type="button">Bold Text</button>
+                    <span class="label" style="opacity:0.8;">Upload images or format text</span>
+                </div>
+                <textarea id="project-desc-input" class="textarea" placeholder="Project description..." rows="6"></textarea>
+            </div>
+            <div class="modal-actions">
+                <button id="project-cancel" class="cta-button secondary" type="button">Cancel</button>
+                <button id="project-save" class="cta-button primary" type="button">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project View Modal -->
+    <div id="project-view-modal" class="modal-backdrop" style="display:none;">
+        <div class="modal">
+            <div id="project-view-cover" class="w-full h-38 rounded-lg mb-4 bg-gray-700"></div>
+            <h3 id="project-view-title" class="modal-title"></h3>
+            <div id="project-view-content" class="modal-content"></div>
+            <div class="modal-actions">
+                <button id="project-view-close" class="cta-button secondary" type="button">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Research Create/Edit Modal -->
+    <div id="research-modal" class="modal-backdrop" style="display:none;">
+        <div class="modal">
+            <h3 id="research-modal-title" class="modal-title">Add Research</h3>
+            <div class="space-y-3">
+                <label class="label">Cover Image</label>
+                <input id="research-cover" type="file" accept="image/*" class="file-input" />
+                <label class="label">Title</label>
+                <input id="research-title-input" type="text" class="input" placeholder="Research title" />
+                <label class="label">Abstract</label>
+                <div style="display:flex; gap:8px; align-items:center; margin-bottom:4px; flex-wrap:wrap;">
+                    <button id="research-insert-image" class="cta-button secondary" type="button">Insert Image</button>
+                    <button id="research-bold-text" class="cta-button secondary" type="button">Bold Text</button>
+                    <span class="label" style="opacity:0.8;">Upload images or format text</span>
+                </div>
+                <textarea id="research-abstract-input" class="textarea" placeholder="Abstract..." rows="6"></textarea>
+                <label class="label">Status</label>
+                <select id="research-status-input" class="input">
+                    <option value="ongoing">On Going</option>
+                    <option value="published">Published</option>
+                    <option value="proposal">Proposal</option>
+                </select>
+            </div>
+            <div class="modal-actions">
+                <button id="research-cancel" class="cta-button secondary" type="button">Cancel</button>
+                <button id="research-save" class="cta-button primary" type="button">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Research View Modal -->
+    <div id="research-view-modal" class="modal-backdrop" style="display:none;">
+        <div class="modal">
+            <div id="research-view-cover" class="w-full h-38 rounded-lg mb-4 bg-gray-700"></div>
+            <h3 id="research-view-title" class="modal-title"></h3>
+            <div id="research-view-content" class="modal-content"></div>
+            <div class="modal-actions">
+                <button id="research-view-close" class="cta-button secondary" type="button">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Work Create/Edit Modal -->
+    <div id="recent-work-modal" class="modal-backdrop" style="display:none;">
+        <div class="modal">
+            <h3 id="recent-work-modal-title" class="modal-title">Add Recent Work</h3>
+            <div class="space-y-3">
+                <label class="label">Cover Image</label>
+                <input id="recent-work-cover" type="file" accept="image/*" class="file-input" />
+                <label class="label">Title</label>
+                <input id="recent-work-title-input" type="text" class="input" placeholder="Recent work title" />
+                <label class="label">Description</label>
+                <textarea id="recent-work-desc-input" class="textarea" placeholder="Brief description..." rows="4"></textarea>
+            </div>
+            <div class="modal-actions">
+                <button id="recent-work-cancel" class="cta-button secondary" type="button">Cancel</button>
+                <button id="recent-work-save" class="cta-button primary" type="button">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Work View Modal -->
+    <div id="recent-work-view-modal" class="modal-backdrop" style="display:none;">
+        <div class="modal">
+            <div id="recent-work-view-cover" class="w-full h-38 rounded-lg mb-4 bg-gray-700"></div>
+            <h3 id="recent-work-view-title" class="modal-title"></h3>
+            <div id="recent-work-view-content" class="modal-content"></div>
+            <div class="modal-actions">
+                <button id="recent-work-view-close" class="cta-button secondary" type="button">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonial Create/Edit Modal -->
+    <div id="testimonial-modal" class="modal-backdrop" style="display:none;">
+        <div class="modal">
+            <h3 id="testimonial-modal-title" class="modal-title">Add Testimonial</h3>
+            <div class="space-y-3">
+                <label class="label">Photo</label>
+                <input id="testimonial-photo" type="file" accept="image/*" class="file-input" />
+                <label class="label">Description</label>
+                <textarea id="testimonial-desc-input" class="textarea" placeholder="Testimonial text..." rows="4"></textarea>
+            </div>
+            <div class="modal-actions">
+                <button id="testimonial-cancel" class="cta-button secondary" type="button">Cancel</button>
+                <button id="testimonial-save" class="cta-button primary" type="button">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

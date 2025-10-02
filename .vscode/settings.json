@@ -1,0 +1,10 @@
+{
+  "liveServer.settings.ignoreFiles": [
+    ".vscode/**",
+    "**/*.map",
+    "node_modules/**",
+    "uploads/**"
+  ]
+}
+
+
