@@ -1,7 +1,7 @@
 const express = require('express');
 const RecentWork = require('../models/RecentWork');
 const { requireAdmin } = require('../middleware/admin');
-const { upload } = require('../middleware/upload');
+const { upload, bufferToBase64 } = require('../middleware/upload');
 
 const router = express.Router();
 const fs = require('fs');
@@ -41,8 +41,14 @@ router.post('/', requireAdmin, upload.single('coverImage'), async (req, res) => 
     const { title, description, coverImageUrl } = req.body;
     let finalCover = coverImageUrl;
     if (req.file) {
-      // Handle both Cloudinary and local storage responses
-      finalCover = req.file.path || `/uploads/${req.file.filename}`;
+      // Handle Cloudinary, Base64, and local storage responses
+      if (req.file.path) {
+        finalCover = req.file.path; // Cloudinary
+      } else if (req.file.buffer) {
+        finalCover = bufferToBase64(req.file.buffer, req.file.mimetype); // Base64
+      } else {
+        finalCover = `/uploads/${req.file.filename}`; // Local
+      }
     }
     const work = await RecentWork.create({ title, description, coverImageUrl: finalCover });
     res.status(201).json(work);
@@ -56,8 +62,14 @@ router.put('/:id', requireAdmin, upload.single('coverImage'), async (req, res) =
     const { title, description, coverImageUrl } = req.body;
     const update = { title, description };
     if (req.file) {
-      // Handle both Cloudinary and local storage responses
-      update.coverImageUrl = req.file.path || `/uploads/${req.file.filename}`;
+      // Handle Cloudinary, Base64, and local storage responses
+      if (req.file.path) {
+        update.coverImageUrl = req.file.path; // Cloudinary
+      } else if (req.file.buffer) {
+        update.coverImageUrl = bufferToBase64(req.file.buffer, req.file.mimetype); // Base64
+      } else {
+        update.coverImageUrl = `/uploads/${req.file.filename}`; // Local
+      }
     } else if (coverImageUrl !== undefined) {
       update.coverImageUrl = coverImageUrl;
     }

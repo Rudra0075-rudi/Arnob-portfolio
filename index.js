@@ -4,7 +4,7 @@ require('dotenv').config();
 const cors = require('cors');
 const { connectDB } = require('./server/config/db');
 const { requireAdmin, ADMIN_SECRET } = require('./server/middleware/admin');
-const { upload, uploadsDir } = require('./server/middleware/upload');
+const { upload, uploadsDir, bufferToBase64 } = require('./server/middleware/upload');
 
 const blogsRouter = require('./server/routes/blogs');
 const projectsRouter = require('./server/routes/projects');
@@ -45,11 +45,14 @@ const PORT = process.env.PORT || 3000;
   app.post('/api/uploads', requireAdmin, upload.single('image'), (req, res) => {
     if (!req.file) return res.status(400).json({ message: 'No file uploaded' });
     
-    // Handle both Cloudinary and local storage responses
+    // Handle Cloudinary, Base64, and local storage responses
     let imageUrl;
     if (req.file.path) {
       // Cloudinary response
       imageUrl = req.file.path;
+    } else if (req.file.buffer) {
+      // Base64 response (production without Cloudinary)
+      imageUrl = bufferToBase64(req.file.buffer, req.file.mimetype);
     } else {
       // Local storage response
       imageUrl = `/uploads/${req.file.filename}`;

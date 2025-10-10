@@ -1,7 +1,7 @@
 const express = require('express');
 const Research = require('../models/Research');
 const { requireAdmin } = require('../middleware/admin');
-const { upload } = require('../middleware/upload');
+const { upload, bufferToBase64 } = require('../middleware/upload');
 
 const router = express.Router();
 const fs = require('fs');
@@ -55,8 +55,14 @@ router.post('/', requireAdmin, upload.single('coverImage'), async (req, res) => 
     const { title, abstract, status, coverImageUrl } = req.body;
     let finalCover = coverImageUrl;
     if (req.file) {
-      // Handle both Cloudinary and local storage responses
-      finalCover = req.file.path || `/uploads/${req.file.filename}`;
+      // Handle Cloudinary, Base64, and local storage responses
+      if (req.file.path) {
+        finalCover = req.file.path; // Cloudinary
+      } else if (req.file.buffer) {
+        finalCover = bufferToBase64(req.file.buffer, req.file.mimetype); // Base64
+      } else {
+        finalCover = `/uploads/${req.file.filename}`; // Local
+      }
     }
     const inlineUrls = extractImageUrlsFromHtml(abstract);
     const paper = await Research.create({ title, abstract, status, coverImageUrl: finalCover, galleryImageUrls: inlineUrls });
@@ -71,8 +77,14 @@ router.put('/:id', requireAdmin, upload.single('coverImage'), async (req, res) =
     const { title, abstract, status, coverImageUrl } = req.body;
     const update = { title, abstract, status };
     if (req.file) {
-      // Handle both Cloudinary and local storage responses
-      update.coverImageUrl = req.file.path || `/uploads/${req.file.filename}`;
+      // Handle Cloudinary, Base64, and local storage responses
+      if (req.file.path) {
+        update.coverImageUrl = req.file.path; // Cloudinary
+      } else if (req.file.buffer) {
+        update.coverImageUrl = bufferToBase64(req.file.buffer, req.file.mimetype); // Base64
+      } else {
+        update.coverImageUrl = `/uploads/${req.file.filename}`; // Local
+      }
     } else if (coverImageUrl !== undefined) {
       update.coverImageUrl = coverImageUrl;
     }
@@ -100,7 +112,11 @@ router.delete('/:id', requireAdmin, async (req, res) => {
 
 router.post('/:id/gallery', requireAdmin, upload.array('images', 10), async (req, res) => {
   try {
-    const urlsFromFiles = (req.files || []).map(f => f.path || `/uploads/${f.filename}`);
+    const urlsFromFiles = (req.files || []).map(f => {
+      if (f.path) return f.path; // Cloudinary
+      if (f.buffer) return bufferToBase64(f.buffer, f.mimetype); // Base64
+      return `/uploads/${f.filename}`; // Local
+    });
     const urlsFromBody = Array.isArray(req.body.imageUrls) ? req.body.imageUrls : (req.body.imageUrls ? [req.body.imageUrls] : []);
     const allUrls = [...urlsFromFiles, ...urlsFromBody];
     const paper = await Research.findByIdAndUpdate(

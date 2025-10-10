@@ -1,7 +1,7 @@
 const express = require('express');
 const Testimonial = require('../models/Testimonial');
 const { requireAdmin } = require('../middleware/admin');
-const { upload } = require('../middleware/upload');
+const { upload, bufferToBase64 } = require('../middleware/upload');
 
 const router = express.Router();
 const fs = require('fs');
@@ -41,8 +41,14 @@ router.post('/', requireAdmin, upload.single('photo'), async (req, res) => {
     const { description, photoUrl } = req.body;
     let finalPhoto = photoUrl;
     if (req.file) {
-      // Handle both Cloudinary and local storage responses
-      finalPhoto = req.file.path || `/uploads/${req.file.filename}`;
+      // Handle Cloudinary, Base64, and local storage responses
+      if (req.file.path) {
+        finalPhoto = req.file.path; // Cloudinary
+      } else if (req.file.buffer) {
+        finalPhoto = bufferToBase64(req.file.buffer, req.file.mimetype); // Base64
+      } else {
+        finalPhoto = `/uploads/${req.file.filename}`; // Local
+      }
     }
     const testimonial = await Testimonial.create({ description, photoUrl: finalPhoto });
     res.status(201).json(testimonial);
@@ -56,8 +62,14 @@ router.put('/:id', requireAdmin, upload.single('photo'), async (req, res) => {
     const { description, photoUrl } = req.body;
     const update = { description };
     if (req.file) {
-      // Handle both Cloudinary and local storage responses
-      update.photoUrl = req.file.path || `/uploads/${req.file.filename}`;
+      // Handle Cloudinary, Base64, and local storage responses
+      if (req.file.path) {
+        update.photoUrl = req.file.path; // Cloudinary
+      } else if (req.file.buffer) {
+        update.photoUrl = bufferToBase64(req.file.buffer, req.file.mimetype); // Base64
+      } else {
+        update.photoUrl = `/uploads/${req.file.filename}`; // Local
+      }
     } else if (photoUrl !== undefined) {
       update.photoUrl = photoUrl;
     }

@@ -27,7 +27,10 @@ const localStorage = multer.diskStorage({
   }
 });
 
-// Use Cloudinary storage if credentials are available, otherwise fallback to local
+// Base64 storage for temporary solution
+const base64Storage = multer.memoryStorage();
+
+// Use Cloudinary storage if credentials are available, otherwise use Base64 for production
 let storage;
 let upload;
 
@@ -42,12 +45,22 @@ if (process.env.CLOUDINARY_CLOUD_NAME && process.env.CLOUDINARY_API_KEY && proce
     }
   });
   upload = multer({ storage });
+} else if (process.env.NODE_ENV === 'production') {
+  // Use Base64 for production when Cloudinary is not configured
+  storage = base64Storage;
+  upload = multer({ storage });
 } else {
-  // Fallback to local storage for development
+  // Use local storage for development
   storage = localStorage;
   upload = multer({ storage });
 }
 
-module.exports = { upload, uploadsDir, cloudinary };
+// Helper function to convert buffer to Base64 data URL
+function bufferToBase64(buffer, mimetype) {
+  const base64 = buffer.toString('base64');
+  return `data:${mimetype};base64,${base64}`;
+}
+
+module.exports = { upload, uploadsDir, cloudinary, bufferToBase64 };
 
 
