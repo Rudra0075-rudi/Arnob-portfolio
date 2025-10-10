@@ -57,7 +57,10 @@ router.post('/', requireAdmin, upload.single('coverImage'), async (req, res) => 
   try {
     const { title, content, coverImageUrl } = req.body;
     let finalCover = coverImageUrl;
-    if (req.file) finalCover = `/uploads/${req.file.filename}`;
+    if (req.file) {
+      // Handle both Cloudinary and local storage responses
+      finalCover = req.file.path || `/uploads/${req.file.filename}`;
+    }
     const inlineUrls = extractImageUrlsFromHtml(content);
     const blog = await Blog.create({ title, content, coverImageUrl: finalCover, galleryImageUrls: inlineUrls });
     res.status(201).json(blog);
@@ -70,8 +73,12 @@ router.put('/:id', requireAdmin, upload.single('coverImage'), async (req, res) =
   try {
     const { title, content, coverImageUrl } = req.body;
     const update = { title, content };
-    if (req.file) update.coverImageUrl = `/uploads/${req.file.filename}`;
-    else if (coverImageUrl !== undefined) update.coverImageUrl = coverImageUrl;
+    if (req.file) {
+      // Handle both Cloudinary and local storage responses
+      update.coverImageUrl = req.file.path || `/uploads/${req.file.filename}`;
+    } else if (coverImageUrl !== undefined) {
+      update.coverImageUrl = coverImageUrl;
+    }
     if (content !== undefined) {
       update.galleryImageUrls = extractImageUrlsFromHtml(content);
     }
@@ -98,7 +105,7 @@ router.delete('/:id', requireAdmin, async (req, res) => {
 
 router.post('/:id/gallery', requireAdmin, upload.array('images', 10), async (req, res) => {
   try {
-    const urlsFromFiles = (req.files || []).map(f => `/uploads/${f.filename}`);
+    const urlsFromFiles = (req.files || []).map(f => f.path || `/uploads/${f.filename}`);
     const urlsFromBody = Array.isArray(req.body.imageUrls) ? req.body.imageUrls : (req.body.imageUrls ? [req.body.imageUrls] : []);
     const allUrls = [...urlsFromFiles, ...urlsFromBody];
     const blog = await Blog.findByIdAndUpdate(

@@ -40,7 +40,10 @@ router.post('/', requireAdmin, upload.single('photo'), async (req, res) => {
   try {
     const { description, photoUrl } = req.body;
     let finalPhoto = photoUrl;
-    if (req.file) finalPhoto = `/uploads/${req.file.filename}`;
+    if (req.file) {
+      // Handle both Cloudinary and local storage responses
+      finalPhoto = req.file.path || `/uploads/${req.file.filename}`;
+    }
     const testimonial = await Testimonial.create({ description, photoUrl: finalPhoto });
     res.status(201).json(testimonial);
   } catch (e) {
@@ -52,8 +55,12 @@ router.put('/:id', requireAdmin, upload.single('photo'), async (req, res) => {
   try {
     const { description, photoUrl } = req.body;
     const update = { description };
-    if (req.file) update.photoUrl = `/uploads/${req.file.filename}`;
-    else if (photoUrl !== undefined) update.photoUrl = photoUrl;
+    if (req.file) {
+      // Handle both Cloudinary and local storage responses
+      update.photoUrl = req.file.path || `/uploads/${req.file.filename}`;
+    } else if (photoUrl !== undefined) {
+      update.photoUrl = photoUrl;
+    }
     const testimonial = await Testimonial.findByIdAndUpdate(req.params.id, update, { new: true });
     res.json(testimonial);
   } catch (e) {

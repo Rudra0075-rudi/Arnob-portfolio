@@ -44,7 +44,18 @@ const PORT = process.env.PORT || 3000;
   // Generic image upload (for inline content images)
   app.post('/api/uploads', requireAdmin, upload.single('image'), (req, res) => {
     if (!req.file) return res.status(400).json({ message: 'No file uploaded' });
-    return res.status(201).json({ url: `/uploads/${req.file.filename}` });
+    
+    // Handle both Cloudinary and local storage responses
+    let imageUrl;
+    if (req.file.path) {
+      // Cloudinary response
+      imageUrl = req.file.path;
+    } else {
+      // Local storage response
+      imageUrl = `/uploads/${req.file.filename}`;
+    }
+    
+    return res.status(201).json({ url: imageUrl });
   });
   app.use('/api/blogs', blogsRouter);
   app.use('/api/projects', projectsRouter);

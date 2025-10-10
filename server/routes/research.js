@@ -54,7 +54,10 @@ router.post('/', requireAdmin, upload.single('coverImage'), async (req, res) => 
   try {
     const { title, abstract, status, coverImageUrl } = req.body;
     let finalCover = coverImageUrl;
-    if (req.file) finalCover = `/uploads/${req.file.filename}`;
+    if (req.file) {
+      // Handle both Cloudinary and local storage responses
+      finalCover = req.file.path || `/uploads/${req.file.filename}`;
+    }
     const inlineUrls = extractImageUrlsFromHtml(abstract);
     const paper = await Research.create({ title, abstract, status, coverImageUrl: finalCover, galleryImageUrls: inlineUrls });
     res.status(201).json(paper);
@@ -67,8 +70,12 @@ router.put('/:id', requireAdmin, upload.single('coverImage'), async (req, res) =
   try {
     const { title, abstract, status, coverImageUrl } = req.body;
     const update = { title, abstract, status };
-    if (req.file) update.coverImageUrl = `/uploads/${req.file.filename}`;
-    else if (coverImageUrl !== undefined) update.coverImageUrl = coverImageUrl;
+    if (req.file) {
+      // Handle both Cloudinary and local storage responses
+      update.coverImageUrl = req.file.path || `/uploads/${req.file.filename}`;
+    } else if (coverImageUrl !== undefined) {
+      update.coverImageUrl = coverImageUrl;
+    }
     if (abstract !== undefined) update.galleryImageUrls = extractImageUrlsFromHtml(abstract);
     const paper = await Research.findByIdAndUpdate(req.params.id, update, { new: true });
     res.json(paper);
@@ -93,7 +100,7 @@ router.delete('/:id', requireAdmin, async (req, res) => {
 
 router.post('/:id/gallery', requireAdmin, upload.array('images', 10), async (req, res) => {
   try {
-    const urlsFromFiles = (req.files || []).map(f => `/uploads/${f.filename}`);
+    const urlsFromFiles = (req.files || []).map(f => f.path || `/uploads/${f.filename}`);
     const urlsFromBody = Array.isArray(req.body.imageUrls) ? req.body.imageUrls : (req.body.imageUrls ? [req.body.imageUrls] : []);
     const allUrls = [...urlsFromFiles, ...urlsFromBody];
     const paper = await Research.findByIdAndUpdate(

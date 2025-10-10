@@ -40,7 +40,10 @@ router.post('/', requireAdmin, upload.single('coverImage'), async (req, res) => 
   try {
     const { title, description, coverImageUrl } = req.body;
     let finalCover = coverImageUrl;
-    if (req.file) finalCover = `/uploads/${req.file.filename}`;
+    if (req.file) {
+      // Handle both Cloudinary and local storage responses
+      finalCover = req.file.path || `/uploads/${req.file.filename}`;
+    }
     const work = await RecentWork.create({ title, description, coverImageUrl: finalCover });
     res.status(201).json(work);
   } catch (e) {
@@ -52,8 +55,12 @@ router.put('/:id', requireAdmin, upload.single('coverImage'), async (req, res) =
   try {
     const { title, description, coverImageUrl } = req.body;
     const update = { title, description };
-    if (req.file) update.coverImageUrl = `/uploads/${req.file.filename}`;
-    else if (coverImageUrl !== undefined) update.coverImageUrl = coverImageUrl;
+    if (req.file) {
+      // Handle both Cloudinary and local storage responses
+      update.coverImageUrl = req.file.path || `/uploads/${req.file.filename}`;
+    } else if (coverImageUrl !== undefined) {
+      update.coverImageUrl = coverImageUrl;
+    }
     const work = await RecentWork.findByIdAndUpdate(req.params.id, update, { new: true });
     res.json(work);
   } catch (e) {
