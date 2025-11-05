@@ -1,29 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile Navigation
-    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-    const mobileMenuClose = document.getElementById('mobile-menu-close');
-    const mobileNav = document.getElementById('mobile-nav');
-    
-    if (mobileMenuToggle && mobileNav) {
-        mobileMenuToggle.addEventListener('click', () => {
-            mobileNav.classList.add('active');
-        });
-    }
-    
-    if (mobileMenuClose && mobileNav) {
-        mobileMenuClose.addEventListener('click', () => {
-            mobileNav.classList.remove('active');
-        });
-    }
-    
-    // Close mobile nav when clicking on a link
-    const mobileNavLinks = mobileNav?.querySelectorAll('.nav-link');
-    mobileNavLinks?.forEach(link => {
-        link.addEventListener('click', () => {
-            mobileNav.classList.remove('active');
-        });
-    });
-    
     // Smooth scrolling for navigation links
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('section');
@@ -378,7 +353,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // ==================== ADMIN + BLOGS/PROJECTS/RESEARCH ====================
     const API_BASE = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost'
         ? 'http://localhost:3000'
-        : '';
+        : 'https://arnob-portfolio-back.onrender.com';
     const ADMIN_SECRET_KEY = 'arnob_admin_secret';
     let adminSecret = localStorage.getItem(ADMIN_SECRET_KEY) || '';
 
